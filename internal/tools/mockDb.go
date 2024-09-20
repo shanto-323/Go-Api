@@ -4,8 +4,7 @@ import (
 	"time"
 )
 
-type mockDb struct {
-}
+type mockDB struct{}
 
 var mockLoginDetails = map[string]LoginDetail{
 	"alex": {
@@ -18,44 +17,43 @@ var mockLoginDetails = map[string]LoginDetail{
 	},
 }
 
-
 var mockCoinDetails = map[string]CoinDetail{
 	"alex": {
-    Coins: 100,
-		Username:  "ALEX",
+		Coins:    100,
+		Username: "ALEX",
 	},
 	"shanto": {
-		Coins: 150,
-		Username:  "SHANTO",
+		Coins:    150,
+		Username: "SHANTO",
 	},
-
 }
 
+func (d *mockDB) GetUserLoginDetails(username string) *LoginDetail {
+	time.Sleep(time.Second * 1)
 
-func (d *mockDb) GetUserLoginDetails(username string) *LoginDetail{
-  time.Sleep(time.Second * 1)
+	var clientData = LoginDetail{}
+	clientData, ok := mockLoginDetails[username]
 
-  var clientData = LoginDetail{}
-  clientData, ok := mockLoginDetails[username]
+	if !ok {
+		return nil
+	}
 
-  if !ok {
-    return nil
-  }
-   
-  return &clientData
+	return &clientData
 }
 
+func (d *mockDB) GetUserCoins(username string) *CoinDetail {
+	time.Sleep(time.Second * 1)
 
+	var clientData = CoinDetail{}
+	clientData, ok := mockCoinDetails[username]
 
-func (d *mockDb) GetUserCoinDetails(username string) *CoinDetail{
-  time.Sleep(time.Second * 1)
+	if !ok {
+		return nil
+	}
 
-  var clientData = CoinDetail{}
-  clientData, ok := mockCoinDetails[username]
+	return &clientData
+}
 
-  if !ok {
-    return nil
-  }
-   
-  return &clientData
+func (d *mockDB) SetUpDataBase() error {
+	return nil
 }
