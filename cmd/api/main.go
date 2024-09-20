@@ -1,8 +1,23 @@
 package api
 
-import(
-"fmt"
-  "net/http"
-  "github.com/go-chi/chi"
-  "github.com/"
+import (
+	"fmt"
+	"github.com/go-chi/chi/v5"
+  "github.com/shanto-323/Go-Api/tree/main/internal/handlers"
+	log "github.com/sirupsen/logrus"
+	"net/http"
 )
+
+func main() {
+	log.SetReportCaller(true)
+  var r *chi.Mux = chi.NewRouter()
+  handlers.Handler(r)
+
+  fmt.Println("Starting Go Api Services...")
+
+  err := http.ListenAndServe("localhost:8000",r)
+
+  if err != nil {
+    log.Error(err)
+  }
+}
