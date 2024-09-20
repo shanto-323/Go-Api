@@ -9,7 +9,7 @@ import (
 func Handler(r *chi.Mux) {
 	r.Use(chimiddle.StripSlashes)
 
-	r.Route("/acount", func(router chi.Router) {
+	r.Route("/account", func(router chi.Router) {
 
 		//IN My Local File
 		router.Use(middlewere.Auth)
