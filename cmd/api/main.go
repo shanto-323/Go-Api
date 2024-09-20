@@ -3,7 +3,7 @@ package api
 import (
 	"fmt"
 	"github.com/go-chi/chi/v5"
-  "github.com/shanto-323/Go-Api/tree/main/internal/handlers"
+  "github.com/shanto-323/Go-Api/internal/handlers"
 	log "github.com/sirupsen/logrus"
 	"net/http"
 )

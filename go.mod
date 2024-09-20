@@ -1,4 +1,4 @@
-module github.com/shanto-323/Go-Api.git
+module github.com/shanto-323/Go-Api
 
 go 1.23.1
 
